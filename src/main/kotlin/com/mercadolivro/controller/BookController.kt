@@ -2,11 +2,15 @@ package com.mercadolivro.controller
 
 import com.mercadolivro.controller.request.PostBookRequest
 import com.mercadolivro.controller.request.PutBookRequest
+import com.mercadolivro.controller.response.BookResponse
 import com.mercadolivro.extension.toBookModel
-import com.mercadolivro.model.BookModel
+import com.mercadolivro.extension.toResponse
 import com.mercadolivro.service.BookService
 import com.mercadolivro.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.web.PageableDefault
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
@@ -17,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
-import java.awt.print.Book
 
 @RestController
 @RequestMapping("book")
@@ -30,18 +33,19 @@ class BookController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun create(@RequestBody requestBody: PostBookRequest){
-      val customer =  customerService.getById(requestBody.customerId)
+      val customer =  customerService.findById(requestBody.customerId)
         bookService.create(requestBody.toBookModel(customer))
     }
 
     @GetMapping
-    fun findAll(): List<BookModel> = bookService.findAll()
+    fun findAll(@PageableDefault(page= 0, size = 10)  pageable: Pageable):
+            Page<BookResponse> =  bookService.findAll(pageable).map{it.toResponse()}
 
     @GetMapping("/active")
-    fun findActives(): List<BookModel> = bookService.findActives()
+    fun findActives(): List<BookResponse> = bookService.findActives().map { it.toResponse() }
 
     @GetMapping("/{id}")
-    fun findById(@PathVariable id: Int): BookModel = bookService.findById(id)
+    fun findById(@PathVariable id: Int): BookResponse = bookService.findById(id).toResponse()
 
     @DeleteMapping ("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

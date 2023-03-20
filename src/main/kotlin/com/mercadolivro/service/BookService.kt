@@ -2,8 +2,11 @@ package com.mercadolivro.service
 
 import com.mercadolivro.enums.BookStatus
 import com.mercadolivro.model.BookModel
+import com.mercadolivro.model.CustomerModel
 import com.mercadolivro.repository.BookRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 
 @Service
@@ -15,8 +18,8 @@ class BookService {
         bookRepository.save(book)
     }
 
-    fun findAll(): List<BookModel> {
-        return bookRepository.findAll().toList()
+    fun findAll(pageable: Pageable): Page<BookModel> {
+        return bookRepository.findAll(pageable)
     }
 
     fun findActives(): List<BookModel> {
@@ -34,5 +37,13 @@ class BookService {
 
     fun update(book: BookModel) {
         bookRepository.save(book)
+    }
+
+    fun deleteByCustomer(customer: CustomerModel) {
+       val books = bookRepository.findByCustomer(customer)
+        books.forEach { it
+            it.status = BookStatus.DELETADO
+        }
+        bookRepository.saveAll(books)
     }
 }

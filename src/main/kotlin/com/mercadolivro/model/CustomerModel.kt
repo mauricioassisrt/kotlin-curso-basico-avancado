@@ -1,12 +1,8 @@
 package com.mercadolivro.model
 
+import com.mercadolivro.enums.CustomerStatus
 import java.io.Serializable
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "customer")
@@ -21,5 +17,8 @@ class CustomerModel(
         @Column(name = "email")
         var email: String? = null,
 
+        @Column
+        @Enumerated(EnumType.STRING)
+        var status: CustomerStatus
 
         ) : Serializable
