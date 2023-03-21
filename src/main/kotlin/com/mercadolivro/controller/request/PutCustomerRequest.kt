@@ -1,7 +1,11 @@
 package com.mercadolivro.controller.request
 
-data class PutCustomerRequest (
-    var name: String,
+import javax.validation.constraints.Email
+import javax.validation.constraints.NotEmpty
 
-    var email: String
+data class PutCustomerRequest(
+        @field: NotEmpty
+        var name: String,
+        @field: Email
+        var email: String
 )
