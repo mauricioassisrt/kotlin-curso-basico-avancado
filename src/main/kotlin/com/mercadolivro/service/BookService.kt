@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import java.awt.print.Book
 
 @Service
 class BookService {
@@ -54,7 +55,12 @@ class BookService {
         bookRepository.saveAll(books)
     }
 
-    fun findAllByIds(bookIds: Set<Int>): List<BookModel> {
-       return bookRepository.findAllById(bookIds).toList()
+    fun findAllByIds(bookIds: Set<Int>): MutableList<BookModel> {
+       return bookRepository.findAllById(bookIds)
+    }
+
+    fun purchase(books: MutableList<BookModel>) {
+        books.map { it.status = BookStatus.VENDIDO }
+        bookRepository.saveAll(books)
     }
 }
