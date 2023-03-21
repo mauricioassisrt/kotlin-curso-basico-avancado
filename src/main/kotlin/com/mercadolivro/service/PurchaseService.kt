@@ -6,7 +6,7 @@ import com.mercadolivro.repository.PurchaseRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
-import java.util.concurrent.SubmissionPublisher
+
 
 @Service
 class PurchaseService {
@@ -18,8 +18,9 @@ class PurchaseService {
     private lateinit var applicationEventPublisher: ApplicationEventPublisher
     fun create(purchaseModel: PurchaseModel){
         purchaseRepository.save(purchaseModel)
-
+        println("Disparando")
         applicationEventPublisher.publishEvent(PurchaseEvent(this, purchaseModel))
+        println("Finalizando")
     }
 
     fun update(purchaseModel: PurchaseModel) {
