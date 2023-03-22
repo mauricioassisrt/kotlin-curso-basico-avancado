@@ -332,13 +332,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url_kotlin}}/book/5",
+							"raw": "{{base_url_kotlin}}/book/",
 							"host": [
 								"{{base_url_kotlin}}"
 							],
 							"path": [
 								"book",
-								"5"
+								""
 							]
 						}
 					},
