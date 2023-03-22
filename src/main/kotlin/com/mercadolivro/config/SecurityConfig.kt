@@ -2,6 +2,7 @@ package com.mercadolivro.config
 
 import com.mercadolivro.repository.CustomerRepository
 import com.mercadolivro.security.AuthenticationFilter
+import com.mercadolivro.security.AuthorizationFilter
 import com.mercadolivro.security.JwtUtil
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -11,7 +12,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
 import org.springframework.security.config.http.SessionCreationPolicy
-import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
@@ -23,7 +23,7 @@ class SecurityConfig(
         private val jwtUtil: JwtUtil
 ) : WebSecurityConfigurerAdapter() {
     // liberar uma URL especifica
-    private val PUBLIC_MATCHERS = arrayOf<String>()
+    //private val PUBLIC_MATCHERS = arrayOf<String>()
     private val PUBLIC_POST_MATCHERS = arrayOf(
             "/customer"
     )
@@ -40,6 +40,7 @@ class SecurityConfig(
                 .permitAll()
                 .anyRequest().authenticated()
         http.addFilter(AuthenticationFilter(authenticationManager(), customerRepository, jwtUtil))
+        http.addFilter(AuthorizationFilter(authenticationManager(), userDetails, jwtUtil))
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
     }
