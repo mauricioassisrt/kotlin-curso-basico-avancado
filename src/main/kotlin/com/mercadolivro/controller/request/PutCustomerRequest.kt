@@ -7,5 +7,8 @@ data class PutCustomerRequest(
         @field: NotEmpty
         var name: String,
         @field: Email
-        var email: String
+        var email: String,
+
+        @field: NotEmpty
+        var password: String
 )

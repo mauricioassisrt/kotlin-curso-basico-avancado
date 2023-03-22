@@ -1,24 +1,32 @@
 package com.mercadolivro.model
 
 import com.mercadolivro.enums.CustomerStatus
-import java.io.Serializable
+import com.mercadolivro.enums.Profile
 import javax.persistence.*
 
-@Entity
-@Table(name = "customer")
-class CustomerModel(
+@Entity(name = "customer")
+data class CustomerModel(
+
         @Id
-        @Column(name = "id")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Int? = null,
 
-        @Column(name = "name")
-        var name: String? = null,
-        @Column(name = "email")
-        var email: String? = null,
+        @Column
+        var name: String,
+
+        @Column
+        var email: String,
 
         @Column
         @Enumerated(EnumType.STRING)
-        var status: CustomerStatus
+        var status: CustomerStatus,
 
-        ) : Serializable
+        @Column
+        val password: String,
+
+        @Column(name = "role")
+        @Enumerated(EnumType.STRING)
+        @ElementCollection(targetClass = Profile::class, fetch = FetchType.EAGER)
+        @CollectionTable(name = "customer_roles", joinColumns = [JoinColumn(name = "customer_id")])
+        var roles: Set<Profile> = setOf()
+)
