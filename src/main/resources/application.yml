@@ -1,13 +1,12 @@
 spring:
+  profiles:
+    active: dev
   jpa:
     hibernate:
       ddl-auto: update
-  datasource:
-    url: jdbc:mysql://localhost:3306/database?createDatabaseIfNotExist=true
-    username: root
-    password: root
   jackson:
     default-property-inclusion: non_null
+
 jwt:
   secret: d512ac60-133b-4318-b038-97c9c64439d9
   expiration: 999999

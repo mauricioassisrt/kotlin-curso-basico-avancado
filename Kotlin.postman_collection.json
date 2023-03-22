@@ -12,7 +12,13 @@
 					"name": "Customer - DELETE",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{toke_kotlin}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Gustavo\", \n    \"email\": \"sgs@gmail.com\"\n}",
@@ -23,11 +29,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/customer/2",
+							"raw": "{{base_url_kotlin}}/customer/2",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"customer",
 								"2"
@@ -40,7 +45,13 @@
 					"name": "Customer - PUT",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{toke_kotlin}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"\", \n    \"email\": \"sgs@gmail.com\"\n}",
@@ -51,11 +62,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/customer/1",
+							"raw": "{{base_url_kotlin}}/customer/1",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"customer",
 								"1"
@@ -71,7 +81,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{bearer-curso-ko}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Gustavo\", \n    \"email\": \"Teste@gmail.com\"\n}",
@@ -82,11 +98,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/customer",
+							"raw": "{{base_url_kotlin}}/customer",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"customer"
 							]
@@ -98,10 +113,16 @@
 					"name": "Customer - POST",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{toke_kotlin}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"asdasd\", \n    \"email\": \"sgs@gmail.com\"\n}",
+							"raw": "{\n    \"name\": \"asdasd\", \n    \"email\": \"mauricio@gmail.com\",\n    \"password\": \"123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -109,11 +130,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/customer",
+							"raw": "{{base_url_kotlin}}/customer",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"customer"
 							]
@@ -128,10 +148,16 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{toke_kotlin}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Gustavo\", \n    \"email\": \"Teste@gmail.com\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -139,14 +165,13 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/customer/144",
+							"raw": "{{base_url_kotlin}}/customer/8",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"customer",
-								"144"
+								"8"
 							]
 						}
 					},
@@ -164,7 +189,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{toke_kotlin}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Gustavo\", \n    \"email\": \"Teste@gmail.com\"\n}",
@@ -175,11 +206,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/book/active",
+							"raw": "{{base_url_kotlin}}/book/active",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"book",
 								"active"
@@ -206,11 +236,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/book/4",
+							"raw": "{{base_url_kotlin}}/book/4",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"book",
 								"4"
@@ -234,11 +263,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/book/1",
+							"raw": "{{base_url_kotlin}}/book/1",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"book",
 								"1"
@@ -251,7 +279,13 @@
 					"name": "Book - PUT",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{toke_kotlin}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"\", \n    \"price\":  123.00\n}",
@@ -262,11 +296,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/book/1",
+							"raw": "{{base_url_kotlin}}/book/1",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"book",
 								"1"
@@ -282,7 +315,13 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{toke_kotlin}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Gustavo\", \n    \"email\": \"Teste@gmail.com\"\n}",
@@ -293,11 +332,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/book/5",
+							"raw": "{{base_url_kotlin}}/book/5",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"book",
 								"5"
@@ -310,10 +348,16 @@
 					"name": "Book - POST",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{toke_kotlin}}",
+								"type": "default"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"\", \n    \"price\": 52.00,\n    \"customer_id\": 1,\n    \"status\": \"ATIVO\"\n\n}",
+							"raw": "{\n    \"name\": \"aaaa\", \n    \"price\": 52.00,\n    \"customer_id\": 1,\n    \"status\": \"ATIVO\"\n\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -321,11 +365,10 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/book",
+							"raw": "{{base_url_kotlin}}/book",
 							"host": [
-								"localhost"
+								"{{base_url_kotlin}}"
 							],
-							"port": "8080",
 							"path": [
 								"book"
 							]
@@ -360,6 +403,79 @@
 							"port": "8080",
 							"path": [
 								"purchase"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Session",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var token = pm.response.headers.get(\"Authorization\")",
+									"pm.environment.set(\"toke_kotlin\", token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mauricio@gmail.com\",\n    \"password\": \"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Report",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI4IiwiZXhwIjoxNjc5NTAyODc4fQ.eRgv9WgkgGysp4ALK4wnmCUMhEu8jnhT7ecEj1BbsB0vmlHxqOwZRYyL3jJ17QUCMsya2QyJsRMBsCbu-a8_1g",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{base_url_kotlin}}/admin/report",
+							"host": [
+								"{{base_url_kotlin}}"
+							],
+							"path": [
+								"admin",
+								"report"
 							]
 						}
 					},
