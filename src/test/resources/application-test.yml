@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/teste?createDatabaseIfNotExist=true
+    username: root
+    password: roo
+  jpa:
+    hibernate:
+      ddl-auto: update
+  jackson:
+    default-property-inclusion: non_null
+
+jwt:
+  secret: d512ac60-133b-4318-b038-97c9c64439d9
+  expiration: 999999
